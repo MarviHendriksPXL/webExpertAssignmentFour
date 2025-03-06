@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inloggen</title>
+</head>
+<body>
+<h1>Inloggen</h1>
+
+<form action="/users" onsubmit="return handleLogin()">
+  <label for="email">E-mailadres:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="password">Wachtwoord:</label>
+  <input type="password" id="password" name="password" required>
+
+  <button type="submit">Aanmelden</button>
+</form>
+
+<script src="index.js"></script>
+</body>
+</html>

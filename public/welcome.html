@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welkom</title>
+  <script>
+    function getCookie(name) {
+      const cookies = document.cookie.split(';'); // Split cookie string by ';' delimiter
+
+      for (let cookie of cookies) {
+        const [key, value] = cookie.split('='); // Split cookie into key-value pair
+
+        if (key === name) { // Check if the key matches the specified name
+          return value; // Return the value if found
+        }
+      }
+
+      return null; // Return null if not found
+    }
+  </script>
+</head>
+<body>
+<h1>Welkom</h1>
+
+<script>
+  const token = getCookie('authenticationToken');
+
+  if (token) {
+    fetch('/users/me', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+            .then(response => response.json())
+            .then(data => {
+              const username = data.user.username;
+              document.querySelector('h1').textContent = `Welkom, ${username}`;
+            });
+  } else {
+    window.location.href = 'index.html';
+  }
+</script>
+</body>
+</html>
